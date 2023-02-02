@@ -12,7 +12,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $cont = $tbl[0];
     }
     if($cont==1){
-        header("Location? homesistema.html");
+        header("Location: homesistema.html");
     }
     else{
         echo"<script>window.alert('USUARIO OU SENHA INCORRETOS!');</script>";
