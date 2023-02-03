@@ -31,8 +31,10 @@ $resultado = mysqli_query($link, $sql);
                 while($tbl = mysqli_fetch_array($resultado)){
                     ?>
                     <tr>
-                        <td><?= $tbl[1]?></td>
+                        <td><?= $tbl[1]?></td><!-- TRAZ SOMENTE A COLUNA NOME PARA A APRESENTAR NA TABELA -->
+                        <!-- AO CLICAR NO BOTÃO ELE JÁ TRARÁ O ID DO USUARIO PARA A PAGINA DO ALTERAR-->
                         <td><a href= "alterausuario.php?id=<? $tbl[0]?>"><input type="button" value="ALTERA"></a></td>
+                        <!-- AO CLICAR NO BOTÃO ELE JÁ TRARÁ O ID DO USUARIO PARA A PAGINA DO EXCLUIR-->
                         <td><a href= "excluiusuario.php?id=<? $tbl[0]?>"><input type="button" value="EXCLUA"></a></td>
                     </tr>
                     <?php
