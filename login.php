@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     include("conectadb.php");
 
     #CONSULTA SQL PARA VERIFICAR USUARIO CADASTRADO
-    $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$password'";
+    $sql = "SELECT COUNT(usu_id) FROM usuarios WHERE usu_nome = '$nome' AND usu_senha = '$password' AND usu_ativo='s'";
     $resultado = mysqli_query($link,$sql);
     
     while($tbl = mysqli_fetch_array($resultado)){
