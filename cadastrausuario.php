@@ -51,8 +51,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <form action="cadastrausuario.php" method="POST">
         <h1>CADASTRO DE USUARIO</h1>
-        <input type="text" name="nome" id="nome" placeholder="NOME"<?+$check($nome !=NULL)>
-        <p></P>
+        <input type="text" name="nome" id="nome" placeholder="NOME" required>
+        <p></p>
         <input type="password" id="senha" name="senha" placeholder="SENHA">
         <img id="olinho" onclick="mostrarsenha()" src="assets/eye.svg">
         <p></p>
