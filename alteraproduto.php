@@ -16,16 +16,16 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     echo"<script>window.alert('PRODUTO ALTERADO! ');</script>";
     exit();    
 }
-$id=$_GE['id'];
+$id=$_GET['id'];
 $sql="SELECT*FROM produtos WHERE pro_id =$id";
 $resultado=mysqli_query($link,$sql);
 
 while($tbl = mysqli_fetch_array($resultado)){
-    $nome=$tbl[1];
-    $descricao=$tbl[2];
-    $quantidade=$tbl[3];
-    $preco=$tbl[4];
-    $ativo=$tbl[5];
+    $nome= $tbl[1];
+    $descricao= $tbl[2];
+    $quantidade= $tbl[3];
+    $preco= $tbl[4];
+    $ativo= $tbl[5];
 }
 
 ?>
@@ -36,26 +36,28 @@ while($tbl = mysqli_fetch_array($resultado)){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>ALTERAR PRODUTO</title>
 </head>
 <body>
+<a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
     <div>
-        <from action="alteraproduto.php" method="post">
+        <form action="alteraproduto.php" method="post">
             <input type="hidden" name="id" value="<?=$id?>">
             <label> NOME</label>
             <input type="text" name="nome", value="<?=$nome?>" required>
-            <label> DESCRIÇÃ</label>
+            <label> DESCRIÇÃO</label>
             <input type="text" name="descricao", value="<?=$nome?>" required>
             <label> QUANTIDADE</label>
-            <input type="text" name="quantidade", value="<?=$nome?>" required>
+            <input type="number" name="quantidade", value="<?=$nome?>" required>
             <label> PREÇO</label>
-            <input type="text" name="preco", value="<?=$nome?>" required>
+            <input type="decimal" name="preco", value="<?=$nome?>" required>
             <br></br>
-            <label>STATUS: <?=$check=($ativo=='s')?"ATIVO":"INATIVO"?></label>
+            <label>STATUS: <?=$check=($ativo=='s')?"ATIVO":"INATIVO"?></label><br>
             <input type="radio" name="ativo" value="s"<?=$ativo=="s"? "checked":""?>>ATIVO<br> 
-            <input type="radio" name="ativo" value="n"<?=$ativo=="n"? "checked":""?>>INATIVO<br>
-
+            <input type="radio" name="ativo" value="n"<?=$ativo=="n"? "checked":""?>>INATIVO
+            <input type="submit" value="SALVAR">
+        </form>
 
     </div>
     

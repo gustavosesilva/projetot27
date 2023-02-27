@@ -5,7 +5,7 @@ include("conectadb.php");
 //função da instrução? LISTAR TODOS OS CONTEÚDOS DA TABELA usuarios
 $sql = "SELECT * FROM usuarios WHERE usu_ativo='s'";
 $resultado = mysqli_query($link, $sql);
-$ativo="s";
+$ativo='s';
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
     $ativo=$_POST['ativo'];
@@ -14,8 +14,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         $resultado=mysqli_query($link,$sql);
     }
     else{
-        $sql="SELECT*FROM usuraios WHERE usu_ativo='n'";
-        $re3sultado=mysqli_query($link,$sql);
+        $sql="SELECT*FROM usuarios WHERE usu_ativo='n'";
+        $resultado=mysqli_query($link,$sql);
     }
 }
 
@@ -36,8 +36,8 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
     <form action="listausuario.php" method="post">
         <input type="radio" name="ativo" value="s" required onclick="submit()"<?=$ativo=='s'?"checked":""?>>ATIVO<br>
-        <input type ="radio" name="ativo" value="n" required onclick="submit()"<?=$ativo=='s'?"checked":""?>>INATIVO<br>
-</form>
+        <input type ="radio" name="ativo" value="n" required onclick="submit()"<?=$ativo=='n'?"checked":""?>>INATIVO
+    </form>
         
 
     <div class="container">

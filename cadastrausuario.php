@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         $sql = "INSERT INTO usuarios (usu_nome, usu_senha, usu_ativo) VALUES ('$nome', '$senha', 'n')";
         mysqli_query($link, $sql);
-        header("Location: listausuarios.php");
+        header("Location: listausuario.php");
     }
 }
 ?>
