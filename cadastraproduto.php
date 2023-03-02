@@ -6,11 +6,32 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
     $descricao = $_POST["descricao"];
     $quantidade = $_POST["quantidade"];
     $preco = $_POST["preco"];
+    $foto1 = $_POST["file1"];
+    #$foto2 = $_POST["file2"];
 
-    $sql="INSERT INTO produtos(pro_nome, pro_descricao, pro_quantidade, pro_preco, pro_ativo) VALUES('$nome', '$descricao', '$quantidade', '$preco','s')";
-mysqli_query($link,$sql);
-header("Location: listaproduto.php");
-exit();
+    if($foto == "") $img="semfoto.png";
+
+#Verifica se o produto está cadastrado 
+$sql="SELECT COUNT(pro_id) FROM produtos WHERE pro_nome = '$nome'";
+$resultado = mysqli_query($link, $sql);
+
+while ($tbl = mysqli_fetch_array($resultado)){
+    $cont = $tbl[0];
+    if($cont ==1){
+        $sql="INSERT INTO produtos(pro_nome, pro_descricao, pro_quantidade, pro_preco, pro_ativ, imagem1) VALUES('$nome', '$descricao', '$quantidade', '$preco','s', '$foto1')";
+        mysqli_query($link,$sql);
+        echo($cont);
+        #header("Location: listaproduto.php");
+        exit();   
+    }
+    else{
+        echo"<script>Window.alert('PRODUTO JÁ CADASTRADO!');</scrpit>";
+    }
+}
+
+
+
+
 }
 ?>
 
@@ -20,7 +41,7 @@ exit();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="newestilo.css">
     <title>CADASTRAR PRODUTOS</title>
 </head>
 <body>
