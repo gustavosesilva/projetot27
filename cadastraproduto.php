@@ -2,14 +2,22 @@
 include("conectadb.php");
 
 if($_SERVER['REQUEST_METHOD']=='POST'){
-    $nome = $_POST["nome"];
+     $nome = $_POST["nome"];
     $descricao = $_POST["descricao"];
     $quantidade = $_POST["quantidade"];
     $preco = $_POST["preco"];
-    $foto1 = $_POST["file1"];
-    #$foto2 = $_POST["file2"];
 
-    if($foto == "") $img="semfoto.png";
+   
+
+
+    #Criptografa a foto para o banco de dados
+    if(isset($_FILES['imagem'])&& $_FILES['imagem']['error']== UPLOAD_ERR_OK){
+        $imagem_temp =$_FILES['imagem']['tmp_name'];
+        $imagem = file_get_contents($imagem_temp);
+        $imagem_base64 = base64_encode ($imagem);
+    }
+
+
 
 #Verifica se o produto está cadastrado 
 $sql="SELECT COUNT(pro_id) FROM produtos WHERE pro_nome = '$nome'";
@@ -17,11 +25,10 @@ $resultado = mysqli_query($link, $sql);
 
 while ($tbl = mysqli_fetch_array($resultado)){
     $cont = $tbl[0];
-    if($cont ==1){
-        $sql="INSERT INTO produtos(pro_nome, pro_descricao, pro_quantidade, pro_preco, pro_ativ, imagem1) VALUES('$nome', '$descricao', '$quantidade', '$preco','s', '$foto1')";
+    if($cont ==0){
+        $sql="INSERT INTO produtos(pro_nome, pro_descricao, pro_quantidade, pro_preco, pro_ativo, imagem1) VALUES('$nome', '$descricao', '$quantidade', '$preco','s', '$imagem_base64')";
         mysqli_query($link,$sql);
-        echo($cont);
-        #header("Location: listaproduto.php");
+        header("Location: listaproduto.php");
         exit();   
     }
     else{
@@ -47,7 +54,7 @@ while ($tbl = mysqli_fetch_array($resultado)){
 <body>
         <a href="homesistema.html"><input type="button" id="menuhome" value="HOME SISTEMA"></a>
         <div>
-            <form action="cadastraproduto.php" method="post">
+            <form action="cadastraproduto.php" method="post" enctype="multipart/form-data">
                 <label>NOME</label>
                 <input type="text" name="nome">
                 <br></br>
@@ -64,12 +71,8 @@ while ($tbl = mysqli_fetch_array($resultado)){
                 <!-- BLOCO DE CÓDIGO NOVO -->
 
                 <label>IMAGEM</label>
-                <input type="file" name="foto1" id="img1" onchange="foto1()">
-                <img src="img/semfoto.png" width="100px" id="foto1a">
+                <input type="file" name="imagem" id="img1" onchange="foto1()">
 
-                <!-- <label>IMAGEM I</label>
-                <input type="file" name="file1" id="img1" onchange="foot1()">
-                <img src="img/semimg.gif" width="50px" id="foto1a"> -->
 
                 <input type="submit" value="CADASTRAR">
 

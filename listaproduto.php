@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
         <!-- onclick="submit()" é um javascript que já faz um submit na pagina usando o navegador como rescurso-->
         <!-- <//?=$ativo== Valida se o radio foi acionado (checked) e mantém a escolha se não ele traz em branco-->
     <input type="radio" name="ativo" value="s" required onclick="submit()"<?=$ativo=='s'?"checked":""?>>ATIVO<br>
-        <input type ="radio" name="ativo" value="n" required onclick="submit()"<?=$ativo=='s'?"checked":""?>>INATIVO<br>
+        <input type ="radio" name="ativo" value="n" required onclick="submit()"<?=$ativo=='n'?"checked":""?>>INATIVO<br>
         </form>
 
     <div class="container">
@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD']=='POST'){
                         <td><?= $tbl[3]?></td>
                         <!--linha abaixo converte formarto da $tbl[3] usando 2 casas após a vírgula e aplicando , ao lugar do ponto -->                       
                         <td>R$ <?= number_format($tbl[4],2,',','.')?></td>
-                        <td><img src="img/<?=$tbl[7]?>"width
+                        <td><img src="data:image/jpeg;base64,<?=$tbl[6]?>" width="100" height="100"></td>
                         <td><a href= "alteraproduto.php?id=<?= $tbl[0]?>"><input type="button" value="ALTERA"></a></td>
                         <!-- tbl[5] verifica se é s que esta vindo do banco de dados, se sim; Escreva SIM  semão escreva NÂO -->
                         <td><?= $check = ($tbl[5]=="s")?"SIM":"NÃO"?></td>
