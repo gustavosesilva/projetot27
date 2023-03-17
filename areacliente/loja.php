@@ -18,7 +18,10 @@ $ativo="s";
     <title>LOJA DO PROJETO</title>
 </head>
 <body>
-    
+    <!-- COLETA NOME DO USUARIO NA VARIAVEL DE SESSÃO -->
+    <h1 style="background-color: whitesmoke;"> BOM DIA <?=$_SESSION['nomecliente'];?></h1>
+    <a href="logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
+    <a haref="clientecadastra.php"><input type="button" id="cliente" value="CADASTRA"></a>
     <form action="loja.php" method="post">
         <!-- Botões que validam se o pdorido é listado domente3 ativos ou inativos-->
         <!-- onclick="submit()" é um javascript que já faz um submit na pagina usando o navegador como rescurso-->
