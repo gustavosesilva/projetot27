@@ -1,6 +1,6 @@
 <?php
 
-session_star();
+session_start();
 #CAPTURA VARIÁVEIS UTILIZANDO O MÉTODO POST
 if($_SERVER['REQUEST_METHOD']=="POST"){
     $cpf = $_POST['cpf']; #captura varíavel que está no name="nome" html

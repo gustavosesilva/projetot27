@@ -1,5 +1,8 @@
 <?php
 include("../conectadb.php");
+session_start();
+
+#Carrega a 
 $sql="SELECT*FROM produtos WHERE pro_ativo = 's'";
 $resultado = mysqli_query($link, $sql);
 #atribui s para variavel ativo
@@ -35,9 +38,8 @@ $ativo="s";
                 <th>ID</th>
                 <th>NOME</th>
                 <th>DESCRIÇÃO</th>
-                <th>QUANTIDADE</th>
                 <th>PREÇO</th>
-                <th>ADICIONAR AO CARRINHO</th>
+                <th>VER PRODUTO</th>
             </tr>
             <?php
             #preenchimento da tabela com os dados do banco
@@ -51,7 +53,7 @@ $ativo="s";
                         <!--linha abaixo converte formarto da $tbl[3] usando 2 casas após a vírgula e aplicando , ao lugar do ponto -->                       
                         <td>R$ <?= number_format($tbl[4],2,',','.')?></td>
                         <td><img src="img/<?=$tbl[7]?>"width="100"></div></td>
-                        <td><a href="addcarrinho.php?id=<?=$tbl[0]&& $quantidade?>"><input type="button" value=" ADICIONAR AO CARRINHHO"></a></td>
+                        <td><a href="verproduto.php?id=<?=$tbl[0]&& $quantidade?>"><input type="button" value="VER PRODUTO"></a></td>
                         <!-- tbl[5] verifica se é s que esta vindo do banco de dados, se sim; Escreva SIM  semão escreva NÂO -->
                         <td><?= $check = ($tbl[5]=="s")?"SIM":"NÃO"?></td>
                 </tr>
