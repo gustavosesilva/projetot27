@@ -49,13 +49,13 @@ $ativo="s";
                         <td><?= $tbl[0]?></td>
                         <td><?= $tbl[1]?></td>
                         <td><?= $tbl[2]?></td>
-                        <td><input type="number" name="quantidade" id="quantidade"></td>
+                        
                         <!--linha abaixo converte formarto da $tbl[3] usando 2 casas após a vírgula e aplicando , ao lugar do ponto -->                       
                         <td>R$ <?= number_format($tbl[4],2,',','.')?></td>
                         <td><img src="img/<?=$tbl[7]?>"width="100"></div></td>
-                        <td><a href="verproduto.php?id=<?=$tbl[0]&& $quantidade?>"><input type="button" value="VER PRODUTO"></a></td>
+                        <td><a href="verproduto.php?id=<?=$tbl[0]?>"><input type="button" value="VER PRODUTO"></a></td>
                         <!-- tbl[5] verifica se é s que esta vindo do banco de dados, se sim; Escreva SIM  semão escreva NÂO -->
-                        <td><?= $check = ($tbl[5]=="s")?"SIM":"NÃO"?></td>
+                        
                 </tr>
                 <?php    
 
