@@ -22,7 +22,28 @@ $ativo="s";
 </head>
 <body>
     <!-- COLETA NOME DO USUARIO NA VARIAVEL DE SESSÃO -->
-    <h1 style="background-color: whitesmoke;"> BOM DIA <?=$_SESSION['nomecliente'];?></h1>
+    <?php
+    if(isset($_SESSION['idclilente'])){
+        ?>
+        <h1 style="background-color: whitesmoke;"> BOM DIA <?=$_SESSION['nomecliente'];?></h1>
+        <form id="formloja" action = "logout.php" method="post">
+            <a href="carrinho.php"><input type="button" value="AREA CLIENTE" <?=$_SESSION['idcliente']?>></a> 
+            <input  type="submit" value="LOGOUT">
+        </form>
+        <?php
+    }
+    else{
+        ?>
+        <form id="formloja" action="logout.php" methodo="post">
+            <a href="logincliente.php"><input type="button" value="LOGIN"></a>
+            <a href="clientecadastra.php"><input type="button" value="CRIAR LOGIN"></a>
+        </form>
+        <?php
+    }   
+        ?>
+    
+
+    
     <a href="logincliente.php"><input type="button" id="logincliente" value="LOGIN"></a>
     <a haref="clientecadastra.php"><input type="button" id="cliente" value="CADASTRA"></a>
     <form action="loja.php" method="post">

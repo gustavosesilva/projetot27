@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD']=="POST"){
         $sql="SELECT * FROM clientes WHERE cli_cpf = '$cpf' AND cli_senha = '$password' AND cli_ativo='s'";
         $resultado =mysqli_query($link,$sql);
         while($tbl = mysqli_fetch_array($resultado)){
-            $_SESSION['idlciente']=$tbl[0];
+            $_SESSION['idcliente']=$tbl[0];
             $_SESSION['nomecliente']=$tbl[2];
         }
         header("Location: loja.php"); #Se usuario e senha corretos, vá para homesistema
