@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $cont = $tbl[0];
             if ($cont == 0) {
                 $sql = "INSERT INTO itens_carrinho (fk_pro_id, item_quantidade, fk_cli_id, valor_carrinho, numero_carrinho, carrinho_finalizado) VALUES('$idproduto','$quantidade', '$idcliente','$totalparcial', '$numerocarrinho', 'n')";
-
+                mysqli_query($link, $sql);
                 echo "<script>window.alert('PRODUTO ADICIONADO AO CARRINHO $numerocarrinho');</script>";
                 echo "<script>window.location.href='loja.php';</script>";
             } else {
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 while ($tbl2 = mysqli_fetch_array($resultado2)) {
                     $numerocarrinhocliente = $tbl2[0];
                     $sql2 = "INSERT INTO  itens_carrinho (fk_pro_id, item_quantidade, fk_cli_id, valor_carrinho,numero_carrinho, carrinho_finalizado) VALUES('$idproduto', '$quantidade', '$idcliente', '$totalparcial', '$numerocarrinhocliente','n')";
-                    mysqli_query($link, $sql);
+                    mysqli_query($link, $sql2);
 
                     echo "<script>window.alert('PRODUTO ADICIONADO AO CARRINHO $numerocarrinhocliente');</script>";
                     echo "<script>window.location.href='loja.php';</script>";
