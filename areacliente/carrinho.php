@@ -59,7 +59,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         FROM itens_carrinho INNER JOIN clientes ON fk_cli_id = cli_id
         INNER JOIN produtos ON fk_pro_id = pro_id
         WHERE cli_id = $idcliente AND carrinho_finalizado = 'n'";
-        mysqli_query($link, $sql);
+        $resultado=mysqli_query($link, $sql);
     }
     else{
         $sql = "SELECT numero_carrinho, pro_nome, pro_descricao, 
@@ -67,7 +67,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
         FROM itens_carrinho INNER JOIN clientes ON fk_cli_id = cli_id
         INNER JOIN produtos ON fk_pro_id = pro_id
         WHERE cli_id = $idcliente AND carrinho_finalizado = 's'";
-        mysqli_query($link, $sql);
+        $resultado=mysqli_query($link, $sql);
     }
 }
 
@@ -87,7 +87,7 @@ if($_SERVER['REQUEST_METHOD']== 'POST'){
     <form action = "carrinho.php" method= "post">
         <input type="radio" name="finalizada" value="s" required onclick="submit()"<?=$finalizada =='s'? "checked" : "" ?>>COMPRAS FINALIZADAS
         <br>
-        <input type="radio" name="finalizada" value="n" required onclick="submit()"<?=$finalizada =='n'? "checked" : "" ?>>COMPRAS FINALIZADAS
+        <input type="radio" name="finalizada" value="n" required onclick="submit()"<?=$finalizada =='n'? "checked" : "" ?>>CARRINHOS ABERTOS
 </form>
 <div class="container">
     <td><a href="finalizavenda.php?id=<?=$tbl[0]?>"><input type="button" valeu="FINALIZAR VENDA"></a></td>
